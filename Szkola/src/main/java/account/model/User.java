@@ -1,4 +1,5 @@
-package zespolowy.account.model;
+package account.model;
+
 
 import javax.persistence.*;
 import java.util.Set;

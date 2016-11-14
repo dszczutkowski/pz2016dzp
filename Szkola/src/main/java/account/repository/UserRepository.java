@@ -1,6 +1,6 @@
-package zespolowy.account.repository;
+package account.repository;
 
-import zespolowy.account.model.User;
+import account.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserRepository extends JpaRepository<User, Long> {
