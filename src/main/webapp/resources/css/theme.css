@@ -11,7 +11,7 @@ body {
     padding: 0;
     background-color: #F1F1F1;
     /* background-image: url(#{request.contextPath}/resources/gfx/schoolmanager.png); */
-    background-repeat: no-repeat;
+   background-repeat: no-repeat;
 }
 
 .loginPageTitle {
