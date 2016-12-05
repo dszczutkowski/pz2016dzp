@@ -30,7 +30,7 @@
         <p:inputText id="loginInput" value="#{loginPageModel.login}" required="true"/>
 
         <p:outputLabel id="passwordLbl" value="Password"/>
-        <p:inputText id="passwordInput" value="#{loginPageModel.password}" required="true"/>
+        <p:password id="passwordInput" value="#{loginPageModel.password}" required="true"/>
 
         <p:commandButton id="loginBtn" value="LOGIN" action="#{loginPageController.login}" update="loginGrowl"/>
 
