@@ -11,7 +11,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui" xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:head></h:head>
 <h:body>
@@ -22,24 +22,31 @@
         <p:outputLabel id="loginPageTitle" value="Wyślij wiadmość" styleClass="loginPageTitle"/>
     </h:form>
 
-    <h:form id="messageMainForm">
+   <ui:composition template="template.xhtml">
 
-        <p:growl id="messageGrowl" showDetail="false" />
+        <ui:define name="content">
 
-        <p>
-            <p:outputLabel id="messageReceiverLbl" value="Odbiorca:"/>
-            <p:inputText id="messageReceiverInput"></p:inputText>
-        </p>
-        <p><p:outputLabel id="messageLbl" value="Treść wiadomości:"/></p>
+            <h:form id="messageMainForm">
 
-        <p><p:inputTextarea rows="10" cols="70" id="messageInput" value="#{messagePageModel.messageText}" required="true"/>
-        </p>
+                <p:growl id="messageGrowl" showDetail="false" />
 
-        <p>
-        <p:commandButton id="sendBtn" value="Wyślij" action="#{messagePageModel.sand}" update="messageGrowl"/>
-        </p>
-    </h:form>
+                <p>
+                    <p:outputLabel id="messageReceiverLbl" value="Odbiorca:"/>
+                    <p:inputText id="messageReceiverInput"></p:inputText>
+                </p>
+                <p><p:outputLabel id="messageLbl" value="Treść wiadomości:"/></p>
 
+                <p><p:inputTextarea rows="10" cols="70" id="messageInput" value="#{messagePageModel.messageText}" required="true"/>
+                </p>
+
+                <p>
+                    <p:commandButton id="sendBtn" value="Wyślij" action="#{messagePageController.send}" update="messageGrowl"/>
+                </p>
+            </h:form>
+
+        </ui:define>
+
+    </ui:composition>
 </h:body>
 
 </html>
