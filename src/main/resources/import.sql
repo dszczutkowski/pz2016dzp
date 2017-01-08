@@ -16,4 +16,39 @@
 --
 
 -- You can use this file to load seed dao into the database using SQL statements
-insert into Member (id, name, email, phone_number) values (0, 'John Smith', 'john.smith@mailinator.com', '2125551212') 
+insert into Member (id, name, email, phone_number) values (0, 'John Smith', 'john.smith@mailinator.com', '2125551212')
+
+
+
+-- Tabelka lesson wypelnienie rekordami.
+
+insert into Lesson (id, dayofweek, description, klasa, lesson, teacher, godzina) values (0, "poniedzialek","fajny opis123", "1a", "matematyka", "jakis tam", 10)
+insert into Lesson (id, dayofweek, description, klasa, lesson, teacher, godzina) values (1, "poniedzialek","fajny opis321", "1b", "matematyka", "jakis tam", 11)
+insert into Lesson (id, dayofweek, description, klasa, lesson, teacher, godzina) values (2, "poniedzialek","fajny opi54s", "1c", "matematyka", "jakis tam", 11)
+insert into Lesson (id, dayofweek, description, klasa, lesson, teacher, godzina) values (3, "poniedzialek","fajny op543is", "1a", "matematyka", "jakis tam",12)
+insert into Lesson (id, dayofweek, description, klasa, lesson, teacher, godzina) values (4, "poniedzialek","fajny op456is", "1b", "matematyka", "jakis tam",12)
+insert into Lesson (id, dayofweek, description, klasa, lesson, teacher, godzina) values (5, "poniedzialek","fajny opi56s", "1c", "matematyka", "jakis tam",12)
+insert into Lesson (id, dayofweek, description, klasa, lesson, teacher, godzina) values (6, "poniedzialek","fajny opi4s", "1a", "matematyka", "jakis tam",13)
+insert into Lesson (id, dayofweek, description, klasa, lesson, teacher, godzina) values (7, "poniedzialek","fajny op64is", "1b", "matematyka", "jakis tam",13)
+insert into Lesson (id, dayofweek, description, klasa, lesson, teacher, godzina) values (8, "poniedzialek","fajny op654is", "1c", "matematyka", "jakis tam",13)
+insert into Lesson (id, dayofweek, description, klasa, lesson, teacher, godzina) values (9, "wtorek","fajny opis", "1a", "matematyka", "jakis tam", 8)
+insert into Lesson (id, dayofweek, description, klasa, lesson, teacher, godzina) values (10, "wtorek","fajny op2is", "1b", "matematyka", "jakis tam",  8)
+insert into Lesson (id, dayofweek, description, klasa, lesson, teacher, godzina) values (11, "wtorek","fajny opi32s", "1c", "matematyka", "jakis tam", 8)
+insert into Lesson (id, dayofweek, description, klasa, lesson, teacher, godzina) values (12, "wtorek","fajny opis", "1a", "matematyka", "jakis tam", 9)
+insert into Lesson (id, dayofweek, description, klasa, lesson, teacher, godzina) values (13, "wtorek","fajny op12is", "1b", "matematyka", "jakis tam", 9)
+insert into Lesson (id, dayofweek, description, klasa, lesson, teacher, godzina) values (14, "wtorek","fajny opis", "1c", "matematyka", "jakis tam",9)
+insert into Lesson (id, dayofweek, description, klasa, lesson, teacher, godzina) values (15, "sroda","faj4ny opis", "1a", "matematyka", "jakis tam", 10)
+insert into Lesson (id, dayofweek, description, klasa, lesson, teacher, godzina) values (16, "sroda","fajny opis", "1b", "matematyka", "jakis tam", 10)
+insert into Lesson (id, dayofweek, description, klasa, lesson, teacher, godzina) values (17, "sroda","fajny opis", "1c", "matematyka", "jakis tam", 10)
+insert into Lesson (id, dayofweek, description, klasa, lesson, teacher, godzina) values (18, "sroda","fajn3y opis", "1a", "matematyka", "jakis tam", 11)
+insert into Lesson (id, dayofweek, description, klasa, lesson, teacher, godzina) values (19, "sroda","fajny opis", "1b", "matematyka", "jakis tam", 11)
+insert into Lesson (id, dayofweek, description, klasa, lesson, teacher, godzina) values (20, "sroda","fajny opis", "1c", "matematyka", "jakis tam", 11)
+insert into Lesson (id, dayofweek, description, klasa, lesson, teacher, godzina) values (21, "czwartek","fa2jny opis", "1a", "matematyka", "jakis tam", 8)
+insert into Lesson (id, dayofweek, description, klasa, lesson, teacher, godzina) values (22, "czwartek","fajny opis", "1b", "matematyka", "jakis tam", 8)
+insert into Lesson (id, dayofweek, description, klasa, lesson, teacher, godzina) values (23, "czwartek","fajny opis", "1c", "matematyka", "jakis tam", 8)
+insert into Lesson (id, dayofweek, description, klasa, lesson, teacher, godzina) values (24, "czwartek","faj1ny opis", "1a", "matematyka", "jakis tam", 9)
+insert into Lesson (id, dayofweek, description, klasa, lesson, teacher, godzina) values (25, "czwartek","fajny opis", "1b", "matematyka", "jakis tam", 9)
+insert into Lesson (id, dayofweek, description, klasa, lesson, teacher, godzina) values (26, "czwartek","fajny opis", "1c", "matematyka", "jakis tam", 10)
+insert into Lesson (id, dayofweek, description, klasa, lesson, teacher, godzina) values (27,"piatek","fajny 2opis", "1a", "matematyka", "jakis tam", 11)
+insert into Lesson (id, dayofweek, description, klasa, lesson, teacher, godzina) values (28,"piatek","fajny opis", "1b", "matematyka", "jakis tam",11)
+insert into Lesson (id, dayofweek, description, klasa, lesson, teacher, godzina) values (29, "piatek","fajny o3pis", "1c", "matematyka", "jakis tam", 12)
