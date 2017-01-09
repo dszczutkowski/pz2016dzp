@@ -1,0 +1,76 @@
+
+head {
+    background-color: #F1F1F1;
+    width: 100%;
+    height: 15%;
+
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #F1F1F1;
+    background-image: url(#{request.contextPath}/resources/gfx/181H.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.ui-widget {
+    font-family: 'Acme', sans-serif;
+    font-size: 3em;
+}
+
+.ui-button {
+    color: #E8C592;
+    border: solid black 8px;
+    margin: 20px auto;
+    padding: 5px;
+}
+    .ui-button:hover {
+        background: rgba(255,150,150,0.5);
+    }
+
+#loginMainForm {
+    font-family: 'Acme', sans-serif;
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #00A2A0;
+    border: solid black 8px;
+    border-radius: 8px;
+}
+    #loginMainForm h1{
+        background-color: #DB5D73;
+        text-align: center;
+        border: solid 8px;
+        border-radius: 3.14em;
+        color: #E8C592;
+        font-size: 92px;
+        font-weight: bold;
+        padding: 5px 10px 5px 10px;
+        margin: 20px 300px 80px;
+        text-shadow: 0.03em 0.03em #000000;
+    }
+
+    #loginMainForm h1 a {
+        margin: 0;
+        padding: 0;
+        color: #E8C592;
+        font-family: 'Acme', sans-serif;
+        text-decoration: none;
+    }
+
+    #loginMainForm p {
+        text-align: center;
+    }
+
+.ui-state-default {
+    background: #DB5D73 -moz-linear-gradient(center top , rgba(255, 150, 150, 0.6), rgba(255, 150, 150, 0)) repeat scroll 0 0;
+    border: 4px solid black;
+    color: #E8C592;
+    font-weight: bold;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.ui-inputfield {
+    box-shadow: 0 2px 2px #fff inset;
+}

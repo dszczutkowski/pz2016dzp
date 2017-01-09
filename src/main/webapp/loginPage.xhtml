@@ -11,30 +11,44 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
 
-<h:head></h:head>
+<h:head>
+    <h:outputStylesheet library="css" name="loginregistration.css" />
+    <link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet"/>
+</h:head>
 <h:body>
-
-
-    <h:form id="titleForm" style="width: 100%; height: 50px;">
-        <h:outputStylesheet name="css/theme.css"/>
-        <p:outputLabel id="loginPageTitle" value="SchoolManager" styleClass="loginPageTitle"/>
-    </h:form>
 
     <h:form id="loginMainForm">
 
+        <h1><a href="index.xhtml">SM</a></h1>
+
         <p:growl id="loginGrowl" showDetail="false" />
 
+        <p>
         <p:outputLabel id="loginLbl" value="Login"/>
+        </p>
+        <p>
         <p:inputText id="loginInput" value="#{loginPageModel.login}" required="true"/>
-
+        </p>
+        <p>
         <p:outputLabel id="passwordLbl" value="Password"/>
+        </p>
+        <p>
         <p:password id="passwordInput" value="#{loginPageModel.password}" required="true"/>
-
+        </p>
+        <p>
         <p:commandButton id="loginBtn" value="LOGIN" action="#{loginPageController.login}" update="loginGrowl"/>
-
+        <p:commandButton id="registerBtn" value="Register" action="#{loginPageController.register}" update="loginGrowl"/>
+        </p>
     </h:form>
+
+
+    <f:facet name="last">
+        <h:outputStylesheet library="css" name="loginregistration.css" />
+    </f:facet>
 
 </h:body>
 
