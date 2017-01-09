@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Created by IntelliJ IDEA.
+  User: USER
+  Date: 2016-11-27
+  Time: 19:43
+-->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <h:outputStylesheet library="css" name="loginregistration.css" />
+    <link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet"/>
+</h:head>
+<h:body>
+
+    <h:form id="loginMainForm">
+
+        <h1><a href="index.xhtml">SM</a></h1>
+
+        <p:growl id="registerGrowl" showDetail="false" />
+
+        <p>
+            <p:outputLabel id="nameLbl" value="Name"/>
+        </p>
+        <p>
+            <p:inputText id="nameInput" value="#{registerPageModel.name}" required="true"/>
+        </p>
+        <p>
+            <p:outputLabel id="surnameLbl" value="Surname"/>
+        </p>
+        <p>
+            <p:inputText id="surnameInput" value="#{registerPageModel.surname}" required="true"/>
+        </p>
+        <p>
+            <p:outputLabel id="phoneLbl" value="Phone Number"/>
+        </p>
+        <p>
+            <p:inputText id="phoneInput" value="#{registerPageModel.phone_number}" required="false"/>
+        </p>
+        <p>
+            <p:outputLabel id="emailLbl" value="email"/>
+        </p>
+        <p>
+            <p:inputText id="emailInput" value="#{registerPageModel.email}" required="true"/>
+        </p>
+        <p>
+            <p:outputLabel id="loginLbl" value="Login"/>
+        </p>
+        <p>
+            <p:inputText id="loginInput" value="#{registerPageModel.login}" required="true"/>
+        </p>
+        <p>
+            <p:outputLabel id="passwordLbl" value="Password"/>
+        </p>
+        <p>
+            <p:password id="passwordInput" value="#{loginPageModel.password}" required="true"/>
+        </p>
+        <p>
+            <p:outputLabel id="passwordLblRepeat" value="Repeat Password"/>
+        </p>
+        <p>
+            <p:password id="passwordRepeatInput" value="#{loginPageModel.password}" required="true"/>
+        </p>
+        <p>
+            <p:commandButton id="registerBtn" value="Register" action="#{memberController.register}" update="registerGrowl"/>
+        </p>
+    </h:form>
+
+
+    <f:facet name="last">
+        <h:outputStylesheet library="css" name="loginregistration.css" />
+    </f:facet>
+
+</h:body>
+
+</html>

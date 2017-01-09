@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form id="loginMainForm" action="login.php">
+
+    <growl id="loginGrowl" showDetail="false" />
+
+    <label id="loginLbl">Login</label>
+    <input id="loginInput" type="text" value="#{loginPageModel.login}" required="true"/>
+
+    <label id="passwordLbl">Password</label>
+    <input id="passwordInput" type="text" value="#{loginPageModel.password}" required="true"/>
+
+    <input id="loginBtn" type="submit" value="LOGIN" action="#{loginPageController.login}" update="loginGrowl"/>
+
+    <input id="registerBtn" type="submit" value="Register" action="#{memberController.register}" update="loginGrowl"/>
+</form>
+</body>
+</html>

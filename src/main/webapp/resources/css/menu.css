@@ -1,0 +1,56 @@
+body {
+    background-color: #00A2A0;
+}
+
+.pagephoto {
+    margin: 0 auto;
+    height: 300px;
+    max-width: 1300px;
+    background: center 550px;
+        background-color: #666666;
+        background-image: url(#{request.contextPath}/resources/gfx/181H.jpg);
+        background-size: cover;
+}
+
+.header {
+    border: solid 6px black;
+    alignment: center;
+    max-width: 1288px;
+    margin: 0 auto;
+    background-color: #DB5D73;
+    font-family: 'Acme', sans-serif;
+    color: #E8C592;
+}
+    .header h1 {
+        font-size: 92px;
+        font-weight: bold;
+        padding: 5px 10px 5px 10px;
+        margin: auto;
+        text-shadow: 0.03em 0.03em #000000;
+    }
+
+.navmenu {
+    text-transform: uppercase;
+    margin: 0px 10px 10px;
+    font-size: 24px;
+}
+    .navmenu .left {
+        text-align: left;
+        margin-left: 15px;
+    }
+    .navmenu .right {
+        text-align: right;
+        margin-right: 15px;
+        float: right;
+    }
+    .navmenu a {
+        text-decoration: none;
+        color: #00A2A0;
+        text-shadow: 0.03em 0.03em #000000;
+    }
+        .navmenu a:hover {
+            color: #E8C592;
+        }
+
+
+
