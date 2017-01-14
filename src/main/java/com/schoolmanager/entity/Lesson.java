@@ -18,7 +18,7 @@ public class Lesson {
     @Column
     private Long id;
     @Column
-    private Long teacherId;
+    private String teacher;
 
     @NotNull
     @Column
@@ -35,4 +35,9 @@ public class Lesson {
     @NotNull
     @Column
     private String time;
+
+    @NotNull
+    @Column
+    private String klasa;
 }
+

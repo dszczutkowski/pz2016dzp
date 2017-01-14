@@ -10,12 +10,13 @@ import java.sql.Time;
 @Table(name = "lesson", schema = "schoolmanager", catalog = "")
 public class LessonEntity {
     private long id;
-    private long teacherid;
-    private String sbjct;
+    private String teacher;
+    private String subject;
     private String classroom;
     private String dayofweek;
     private Time hours;
     private String description;
+    private String klasa;
 
     @Id
     @Column(name = "id")
@@ -28,23 +29,23 @@ public class LessonEntity {
     }
 
     @Basic
-    @Column(name = "teacherid")
-    public long getTeacherid() {
-        return teacherid;
+    @Column(name = "teacher")
+    public String getTeacher() {
+        return teacher;
     }
 
-    public void setTeacherid(long teacherid) {
-        this.teacherid = teacherid;
+    public void setTeacher(String teacher) {
+        this.teacher = teacher;
     }
 
     @Basic
-    @Column(name = "sbjct")
-    public String getSbjct() {
-        return sbjct;
+    @Column(name = "subject")
+    public String getSubject() {
+        return subject;
     }
 
-    public void setSbjct(String sbjct) {
-        this.sbjct = sbjct;
+    public void setSubject(String sbjct) {
+        this.subject = sbjct;
     }
 
     @Basic
@@ -87,6 +88,16 @@ public class LessonEntity {
         this.description = description;
     }
 
+    @Basic
+    @Column(name = "klasa")
+    public String getKlasa() {
+        return klasa;
+    }
+
+    public void setKlasa(String klasa) {
+        this.klasa = klasa;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -95,12 +106,13 @@ public class LessonEntity {
         LessonEntity that = (LessonEntity) o;
 
         if (id != that.id) return false;
-        if (teacherid != that.teacherid) return false;
-        if (sbjct != null ? !sbjct.equals(that.sbjct) : that.sbjct != null) return false;
+        if (teacher != that.teacher) return false;
+        if (subject != null ? !subject.equals(that.subject) : that.subject != null) return false;
         if (classroom != null ? !classroom.equals(that.classroom) : that.classroom != null) return false;
         if (dayofweek != null ? !dayofweek.equals(that.dayofweek) : that.dayofweek != null) return false;
         if (hours != null ? !hours.equals(that.hours) : that.hours != null) return false;
         if (description != null ? !description.equals(that.description) : that.description != null) return false;
+        if (klasa != null ? !klasa.equals(that.klasa) : that.klasa != null) return false;
 
         return true;
     }
@@ -108,12 +120,13 @@ public class LessonEntity {
     @Override
     public int hashCode() {
         int result = (int) (id ^ (id >>> 32));
-        result = 31 * result + (int) (teacherid ^ (teacherid >>> 32));
-        result = 31 * result + (sbjct != null ? sbjct.hashCode() : 0);
+        result = 31 * result + (teacher != null ? teacher.hashCode() : 0);
+        result = 31 * result + (subject != null ? subject.hashCode() : 0);
         result = 31 * result + (classroom != null ? classroom.hashCode() : 0);
         result = 31 * result + (dayofweek != null ? dayofweek.hashCode() : 0);
         result = 31 * result + (hours != null ? hours.hashCode() : 0);
         result = 31 * result + (description != null ? description.hashCode() : 0);
+        result = 31 * result + (klasa != null ? klasa.hashCode() : 0);
         return result;
     }
 }
