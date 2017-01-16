@@ -23,6 +23,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Enumerated;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
@@ -48,8 +49,11 @@ public class Member implements Serializable {
     //@NotNull
     //@Size(min = 1, max = 25)
     //@Pattern(regexp = "[^0-9]*", message = "Must not contain numbers")
-    @Column(name = "NAME")
-    private String name;
+    @Column(name = "FIRSTNAME")
+    private String firstName;
+
+    @Column(name = "LASTNAME")
+    private String lastName;
 
     //@NotNull
     //@NotEmpty
@@ -64,6 +68,18 @@ public class Member implements Serializable {
     @Column(name = "PHONE_NUMBER")
     private String phoneNumber;
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    @Column(name = "PASSWORD")
+    private String password;
+
+
     public Long getId() {
         return id;
     }
@@ -72,12 +88,20 @@ public class Member implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {

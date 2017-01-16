@@ -26,6 +26,10 @@ import javax.inject.Named;
 
 import com.schoolmanager.entity.Member;
 import com.schoolmanager.service.MemberRegistration;
+import com.schoolmanager.view.model.LoginPageModel;
+import com.schoolmanager.view.model.RegisterPageModel;
+
+import java.util.logging.Logger;
 
 // The @Model stereotype is a convenience mechanism to make this a request-scoped bean that has an
 // EL name
@@ -40,6 +44,12 @@ public class MemberController {
     @Inject
     private MemberRegistration memberRegistration;
 
+    @Inject
+    private Logger log;
+
+    @Inject
+    private RegisterPageModel registerPageModel;
+
     @Produces
     @Named
     private Member newMember;
@@ -50,19 +60,29 @@ public class MemberController {
     }
 
     public void register() throws Exception {
-        try {
+        if(registerPageModel.getPassword().equals(registerPageModel.getPasswordRepeat()))
+            try {
+                newMember.setFirstName(registerPageModel.getName());
+                newMember.setLastName(registerPageModel.getSurname());
+                newMember.setPhoneNumber(registerPageModel.getPhone_number());
+                newMember.setEmail(registerPageModel.getEmail());
+                newMember.setPassword(registerPageModel.getPassword());
+                memberRegistration.register(newMember);
+                FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_INFO, "Registered!", "Registration successful");
+                facesContext.addMessage(null, m);
+                initNewMember();
+                FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
+            } catch (Exception e) {
+                String errorMessage = getRootErrorMessage(e);
+                FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_ERROR, errorMessage, "Registration unsuccessful");
+                facesContext.addMessage(null, m);
+            }
+        else {
 
-            newMember.setName("Kolezka");
-
-            memberRegistration.register(newMember);
-            FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_INFO, "Registered!", "Registration successful");
-            facesContext.addMessage(null, m);
-            initNewMember();
-        } catch (Exception e) {
-            String errorMessage = getRootErrorMessage(e);
-            FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_ERROR, errorMessage, "Registration unsuccessful");
+            FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_INFO, "Hasla musza byc takie same!", "Niepoprawna walidacja");
             facesContext.addMessage(null, m);
         }
+
     }
 
     private String getRootErrorMessage(Exception e) {

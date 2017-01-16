@@ -11,6 +11,16 @@ public class RegisterPageModel {
     private String surname;
     private String login;
     private String password;
+
+    public String getPasswordRepeat() {
+        return passwordRepeat;
+    }
+
+    public void setPasswordRepeat(String passwordRepeat) {
+        this.passwordRepeat = passwordRepeat;
+    }
+
+    private String passwordRepeat;
     private String email;
     private String phone_number;
     private enum role {admin, teacher, student}

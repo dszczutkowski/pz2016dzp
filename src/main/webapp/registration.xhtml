@@ -61,13 +61,13 @@
             <p:outputLabel id="passwordLbl" value="Password"/>
         </p>
         <p>
-            <p:password id="passwordInput" value="#{loginPageModel.password}" required="true"/>
+            <p:password id="passwordInput" value="#{registerPageModel.password}" required="true"/>
         </p>
         <p>
             <p:outputLabel id="passwordLblRepeat" value="Repeat Password"/>
         </p>
         <p>
-            <p:password id="passwordRepeatInput" value="#{loginPageModel.password}" required="true"/>
+            <p:password id="passwordRepeatInput" value="#{registerPageModel.passwordRepeat}" required="true"/>
         </p>
         <p>
             <p:commandButton id="registerBtn" value="Register" action="#{memberController.register}" update="registerGrowl"/>

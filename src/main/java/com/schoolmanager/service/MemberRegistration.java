@@ -39,14 +39,10 @@ public class MemberRegistration {
     private Event<Member> memberEventSrc;
 
     public void register(Member member) throws Exception {
-        log.info("Registering " + member.getName());
-        TeacherEntity teacher = new TeacherEntity();
-        teacher.setName("Jasio");
-        em.persist(teacher);
-       // em.persist(m);
-        //long i = 0;
-        //em.getReference(Member.class, i);
-          //  System.out.println("\n\n\n\n\n\nZjem jajko " + em.contains(member) + "\n\n\n\n\n");
+        log.info("Registering " + member.getPassword());
+
+        em.persist(member);
+
         memberEventSrc.fire(member);
     }
 }
