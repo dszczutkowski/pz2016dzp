@@ -31,13 +31,13 @@
         <p:outputLabel id="loginLbl" value="Login"/>
         </p>
         <p>
-        <p:inputText id="loginInput" value="#{loginPageModel.login}" required="true"/>
+        <p:inputText id="loginInput" value="#{loginPageModel.login}" />
         </p>
         <p>
         <p:outputLabel id="passwordLbl" value="Password"/>
         </p>
         <p>
-        <p:password id="passwordInput" value="#{loginPageModel.password}" required="true"/>
+        <p:password id="passwordInput" value="#{loginPageModel.password}" />
         </p>
         <p>
         <p:commandButton id="loginBtn" value="LOGIN" action="#{loginPageController.login}" update="loginGrowl"/>
