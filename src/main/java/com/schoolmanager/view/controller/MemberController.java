@@ -67,6 +67,7 @@ public class MemberController {
                 newMember.setPhoneNumber(registerPageModel.getPhone_number());
                 newMember.setEmail(registerPageModel.getEmail());
                 newMember.setPassword(registerPageModel.getPassword());
+                newMember.setLogin(registerPageModel.getLogin());
                 memberRegistration.register(newMember);
                 FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_INFO, "Registered!", "Registration successful");
                 facesContext.addMessage(null, m);

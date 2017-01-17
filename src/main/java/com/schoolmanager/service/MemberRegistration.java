@@ -39,7 +39,7 @@ public class MemberRegistration {
     private Event<Member> memberEventSrc;
 
     public void register(Member member) throws Exception {
-        log.info("Registering " + member.getPassword());
+        log.info("Registering " + member.getLogin());
 
         em.persist(member);
 

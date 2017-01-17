@@ -46,6 +46,17 @@ public class Member implements Serializable {
     @Column(name = "ID")
     private Long id;
 
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    @Column(name = "LOGIN")
+    private String login;
+
     //@NotNull
     //@Size(min = 1, max = 25)
     //@Pattern(regexp = "[^0-9]*", message = "Must not contain numbers")
