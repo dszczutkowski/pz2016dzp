@@ -134,6 +134,12 @@
             <scope>provided</scope>
         </dependency>
 
+        <dependency>
+            <groupId>javax.transaction</groupId>
+            <artifactId>jta</artifactId>
+            <version>1.1</version>
+        </dependency>
+
         <!-- Now we declare any tools needed -->
 
         <!-- Annotation processor to generate the JPA metamodel classes for
