@@ -2,9 +2,13 @@ package com.schoolmanager.view.controller;
 
 import com.schoolmanager.util.stereotypes.Controller;
 import com.schoolmanager.view.model.IndexPageModel;
-import com.schoolmanager.view.model.LoginPageModel;
-import org.slf4j.Logger;
 
+import javax.enterprise.inject.Model;
+
+
+import java.util.logging.Logger;
+
+import javax.enterprise.inject.Model;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
@@ -16,11 +20,17 @@ import java.io.IOException;
 public class IndexPageController {
 
     @Inject
+    private FacesContext facesContext;
+
+    @Inject
     private IndexPageModel indexPageModel;
-    private Logger logger;
+
+    @Inject
+    private Logger log;
 
     public void lessonButtonClick(){
         try {
+            log.info("ccccccccccccccccccccccccc");
             FacesContext.getCurrentInstance().getExternalContext().redirect("lesson.xhtml");
         } catch (IOException e) {
             e.printStackTrace();
