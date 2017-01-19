@@ -39,6 +39,7 @@ body {
     border-radius: 8px;
 }
     #loginMainForm h1{
+        display: block;
         background-color: #DB5D73;
         text-align: center;
         border: solid 8px;
@@ -47,8 +48,9 @@ body {
         font-size: 36px;
         font-weight: bold;
         padding: 5px 10px 5px 10px;
-        margin: 20px 300px 80px;
+        margin: 20px 320px 80px 320px;
         text-shadow: 0.03em 0.03em #000000;
+        min-width: 150px;
     }
 
     #loginMainForm h1 a {
@@ -74,4 +76,5 @@ body {
 
 .ui-inputfield {
     box-shadow: 0 2px 2px #fff inset;
+    width: 60%;
 }
