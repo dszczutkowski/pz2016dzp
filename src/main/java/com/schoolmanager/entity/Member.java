@@ -72,6 +72,9 @@ public class Member implements Serializable {
     @Column(name = "EMAIL")
     private String email;
 
+    @Column(name = "STATUS")
+    private String status;
+
     //@NotNull
     //@Size(min = 10, max = 12)
     //@Digits(fraction = 0, integer = 12)
@@ -93,6 +96,14 @@ public class Member implements Serializable {
 
     public Long getId() {
         return id;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public void setId(Long id) {

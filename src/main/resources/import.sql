@@ -49,3 +49,9 @@ insert into lesson (id, dayOfWeek, description, klasa, subject, teacher, hours, 
 insert into lesson (id, dayOfWeek, description, klasa, subject, teacher, hours, classroom) values (27,"piatek","fajny 2opis", "1a", "matematyka", "jakis tam", 11, "111")
 insert into lesson (id, dayOfWeek, description, klasa, subject, teacher, hours, classroom) values (28,"piatek","fajny opis", "1b", "matematyka", "jakis tam",11, "112")
 insert into lesson (id, dayOfWeek, description, klasa, subject, teacher, hours, classroom) values (29, "piatek","fajny o3pis", "1c", "matematyka", "jakis tam", 12, "113")
+
+
+INSERT into MEMBER (ID, EMAIL, PHONE_NUMBER, FIRSTNAME, LASTNAME, LOGIN, PASSWORD, STATUS) VALUES(500, "fajny@wp.pl", 222-222-222, "Admin", "Root", "admin", "haslo", "admin");
+INSERT into MEMBER (ID, EMAIL, PHONE_NUMBER, FIRSTNAME, LASTNAME, LOGIN, PASSWORD, STATUS) VALUES(501, "fajny@wp.pl", 222-222-222, "Pawel", "Root", "pawel", "haslo", "teacher");
+INSERT into MEMBER (ID, EMAIL, PHONE_NUMBER, FIRSTNAME, LASTNAME, LOGIN, PASSWORD, STATUS) VALUES(502, "fajny@wp.pl", 222-222-222, "Dawid", "Root", "dawid", "haslo", "teacher");
+INSERT into MEMBER (ID, EMAIL, PHONE_NUMBER, FIRSTNAME, LASTNAME, LOGIN, PASSWORD, STATUS) VALUES(503, "fajny@wp.pl", 222-222-222, "Lukasz", "Root", "lukasz", "haslo", "teacher");
