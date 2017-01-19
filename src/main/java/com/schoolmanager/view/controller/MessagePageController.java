@@ -1,8 +1,10 @@
 package com.schoolmanager.view.controller;
 
 import com.schoolmanager.entity.Message;
+import com.schoolmanager.service.LoginSession;
 import com.schoolmanager.service.MemberRegistration;
 import com.schoolmanager.service.MessageSender;
+import com.schoolmanager.entity.Member;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
@@ -11,6 +13,8 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.servlet.http.HttpSession;
+import java.util.logging.Logger;
 
 /**
  * Created by Acer on 2016-12-05.
@@ -25,6 +29,9 @@ public class MessagePageController {
     @Inject
     private MessageSender messageSender;
 
+    @Inject
+    private Logger log;
+
     @Produces
     @Named
     private Message newMessage;
@@ -34,8 +41,19 @@ public class MessagePageController {
         newMessage = new Message();
     }
 
+
+    public void init()
+    {
+        HttpSession session = LoginSession.getSession();
+        Member meh;
+        meh = (Member)session.getAttribute("USERNAME");
+        log.info("aaaaaaaaaaaaaaaaaaaaaaaaaaa ->"+meh.getLogin());
+
+    }
+
     public void send() throws Exception {
         try {
+            newMessage.setText("dwdsdqd");
             messageSender.send(newMessage);
             FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_INFO, "Wyslano!", "Wysylanie powiodlo sie");
             facesContext.addMessage(null, m);

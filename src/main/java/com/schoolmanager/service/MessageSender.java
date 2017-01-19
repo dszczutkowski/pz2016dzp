@@ -16,8 +16,12 @@ public class MessageSender {
     @Inject
     private EntityManager em;
 
+    @Inject
+    private Event<Message> memberEventSrc;
 
     public void send(Message message) throws Exception {
         em.persist(message);
+
+        memberEventSrc.fire(message);
     }
 }

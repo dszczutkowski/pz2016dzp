@@ -22,6 +22,14 @@ public class Message {
     @Column
     private Long id;
 
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
     @NotNull
     @NotEmpty
     @Column
@@ -30,6 +38,14 @@ public class Message {
     @NotNull
     @Column
     private Long senderId;
+
+    public Long getReceiverId() {
+        return receiverId;
+    }
+
+    public void setReceiverId(Long receiverId) {
+        this.receiverId = receiverId;
+    }
 
     @NotNull
     @Column

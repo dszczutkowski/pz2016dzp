@@ -10,6 +10,8 @@ public class MessagePageModel {
 
     private String messageText;
 
+
+
     public String getMessageText() {
         return messageText;
     }
