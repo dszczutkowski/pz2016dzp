@@ -32,8 +32,8 @@ public class MessagePageController {
     @Inject
     private Logger log;
 
-    @Produces
-    @Named
+   // @Produces
+ //   @Named
     private Message newMessage;
 
     @PostConstruct
@@ -51,10 +51,8 @@ public class MessagePageController {
 
     }
 
-    public void send() throws Exception {
+    public void wyslij() throws Exception {
         try {
-            newMessage.setText("dwdsdqd");
-            messageSender.send(newMessage);
             FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_INFO, "Wyslano!", "Wysylanie powiodlo sie");
             facesContext.addMessage(null, m);
             initNewMessage();

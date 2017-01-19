@@ -36,9 +36,12 @@ public class DropdownView implements Serializable {
     public String getChosenUser() {
         return chosenUser;
     }
-
+    private Member m;
     @Inject
     private MessageSender messageSender;
+
+    @Inject
+    private FacesContext facesContext;
 
     @Inject
     private java.util.logging.Logger log;
@@ -54,15 +57,23 @@ public class DropdownView implements Serializable {
     @Inject
     private MemberRepository memberRepository;
 
-  //  @Produces
-  //  @Named
+    @Produces
+    @Named
     private Message newMessage;
 
+    private String messageText;
+
+    public String getMessageText() {
+        return messageText;
+    }
+
+    public void setMessageText(String messageText) {
+        this.messageText = messageText;
+    }
 
     @PostConstruct
     public void init() {
         HttpSession session = LoginSession.getSession();
-        Member m;
         m = (Member)session.getAttribute("USERNAME");
         users  = new HashMap<String, String>();
         list = memberRepository.findAllOrderedByName();
@@ -74,19 +85,27 @@ public class DropdownView implements Serializable {
     }
 
     public void sendButtonClick() {
-        newMessage.setText("wiadomość");
+        newMessage.setText(messageText);
+        newMessage.setReceiverId((long) 0);
         for (Member me : list) {
             if ((me.getFirstName() + " " + me.getLastName()).equals(chosenUser)) {
                 newMessage.setReceiverId(me.getId());
             }
         }
+        if (newMessage.getReceiverId() == 0) {
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Wybierz do kogo wyslac wiadomosc!", "Nie wybrano odbiorcy");
+            facesContext.addMessage(null, msg);
+        } else {
+            newMessage.setSenderId(m.getId());
             try {
                 messageSender.send(newMessage);
+                FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_INFO, "Wyslano!", "Wyslano wiadomosc");
+                facesContext.addMessage(null, m);
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-
+    }
 
     public Map<String, String> getUsers() {
         return users;

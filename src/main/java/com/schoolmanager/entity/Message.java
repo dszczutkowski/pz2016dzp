@@ -13,7 +13,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @SuppressWarnings("serial")
 @Entity
-@XmlRootElement
 @Table(name = "MESSAGE")
 public class Message {
 
@@ -30,12 +29,19 @@ public class Message {
         this.text = text;
     }
 
-    @NotNull
-    @NotEmpty
+
     @Column
     private String text;
 
-    @NotNull
+
+    public Long getSenderId() {
+        return senderId;
+    }
+
+    public void setSenderId(Long senderId) {
+        this.senderId = senderId;
+    }
+
     @Column
     private Long senderId;
 
@@ -47,7 +53,7 @@ public class Message {
         this.receiverId = receiverId;
     }
 
-    @NotNull
+
     @Column
     private Long receiverId;
 }
