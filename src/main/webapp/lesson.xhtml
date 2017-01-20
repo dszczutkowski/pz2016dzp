@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Created by IntelliJ IDEA.
+  User: USER
+  Date: 2016-11-27
+  Time: 19:43
+-->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui" xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+    <title>School Manager</title>
+    <h:outputStylesheet library="css" name="menu.css" />
+    <h:outputStylesheet library="css" name="table.css" />
+    <link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet"/>
+</h:head>
+<h:body>
+    <h:form>
+        <p:remoteCommand name="onload" action="#{lessonPageController.init}" autoRun="true" />
+    </h:form>
+
+    <div class="pagephoto"/>
+    <div class="header">
+
+        <h1>SM</h1>
+
+        <div class="navmenu">
+
+            <a class="left" href="index.xhtml">Main</a>
+            <a class="left" href="">Lessons</a>
+            <a class="left" href="messagePage.xhtml">Stuff</a>
+
+            <a class="right" href="registration.xhtml">Register</a>
+            <a class="right" href="loginPage.xhtml">Login</a>
+
+        </div>
+
+    </div>
+    <p:panel header="Wybierz klase" style="margin-bottom:10px;">
+        <h:panelGrid columns="2" cellpadding="5">
+            <p:selectOneMenu id="Klasy" value="#{lessonPageModel.chosenKlasa}" style="width:300px">
+                <f:selectItems value="#{lessonPageModel.klasy}" />
+            </p:selectOneMenu>
+        </h:panelGrid>
+    </p:panel>
+    <p>
+        <p:commandButton id="CheckIt" value="CHECK IT" action="#{lessonPageController.CheckIt}"/>
+    </p>
+
+    <p:dataTable var="Lesson" value="#{lessonPageModel.lessons}">
+        <p:column headerText="Poniedzialek">
+            <h:outputText value="#{lessonPageModel.lessons}" />
+        </p:column>
+
+        <p:column headerText="Wtorek">
+            <h:outputText value="#{modelTest.description}" />
+        </p:column>
+
+        <p:column headerText="Sroda">
+            <h:outputText value="#{car.brand}" />
+        </p:column>
+
+        <p:column headerText="Czwartek">
+            <h:outputText value="#{car.color}" />
+        </p:column>
+
+        <p:column headerText="Piatek">
+            <h:outputText value="#{car.color}" />
+        </p:column>
+    </p:dataTable>
+</h:body>
+
+</html>

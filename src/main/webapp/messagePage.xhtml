@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Created by IntelliJ IDEA.
+  User: USER
+  Date: 2016-11-27
+  Time: 19:43
+-->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui" xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+    <h:outputStylesheet library="css" name="loginregistration.css" />
+    <link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet"/>
+</h:head>
+<h:body>
+
+    <h:form id="messageMainForm">
+
+        <div class="logo"><a href="index.xhtml">SM</a></div>
+        <p:outputLabel id="messagePageTitle" value="Wyślij wiadmość" styleClass="loginPageTitle"/>
+        <p:growl id="messageGrowl" showDetail="false" />
+
+        <p:remoteCommand name="onload" action="#{messagePageController.init}" autoRun="true" />
+        <p:growl id="msgs" showDetail="true" />
+
+        <p:panel header="Wybierz do kogo chcesz wysłać wiadomość" style="margin-bottom:10px;">
+            <h:panelGrid columns="2" cellpadding="5">
+                <p:selectOneMenu id="odbiorcy" value="#{dropdownView.chosenUser}" style="width:300px">
+                    <f:selectItem itemLabel="Odbiorca" itemValue="" noSelectionOption="true" />
+                    <f:selectItems value="#{dropdownView.users}" />
+                </p:selectOneMenu>
+            </h:panelGrid>
+        </p:panel>
+
+        <p>
+            <p:outputLabel id="topicLbl" value="Temat"/>
+        </p>
+        <p>
+            <p:inputText id="loginInput" value="#{messagePageModel.topic}" />
+        </p>
+        <p>
+            <p:outputLabel id="messageLbl" value="Treść wiadomości:"/>
+        </p>
+        <p>
+            <p:inputTextarea rows="10" cols="70" id="messageInput" value="#{messagePageModel.messageText}" required="true"/>
+        </p>
+        <p>
+            <p:commandButton id="sendBtn" value="Wyślij" action="#{dropdownView.sendButtonClick}" update="messageGrowl"/>
+        </p>
+
+    </h:form>
+
+</h:body>
+
+</html>

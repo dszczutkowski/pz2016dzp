@@ -1,2 +1,4 @@
-.idea/
-target/
+/.idea
+/target
+/src/main/resources/META-INF/persistence.xml
+school-manager.iml
