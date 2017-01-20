@@ -11,34 +11,40 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
 
 <h:head>
     <title>School Manager</title>
     <h:outputStylesheet library="css" name="menu.css" />
+    <h:outputStylesheet library="css" name="loginregistration.css" />
     <link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet"/>
+
 </h:head>
 <h:body>
 
     <div class="pagephoto"/>
     <div class="header">
 
-        <h1>SM</h1>
+        <p:growl id="indexGrowl" showDetail="false" />
+
+        <div class="logo"><a href="index.xhtml">SM</a></div>
 
         <div class="navmenu">
-            <p:growl id="indexGrowl" showDetail="false" />
 
             <a class="left" >Main</a>
             <a class="left" href="lesson.xhtml">Lesson</a>
             <a class="left" href="messagePage.xhtml">Messages</a>
             <a class="left" href="inbox.xhtml">Inbox</a>
 
-            <a class="right" href="registration.xhtml">Register</a>
-            <a class="right" href="loginPage.xhtml">Login</a>
-
+            <h3 class="right"> Witaj a!</h3>
+            <h:form>
+                <p:commandButton class="right" action="#{loginPageController.logout}" value="Logout" update="indexGrowl"/>
+            </h:form>
         </div>
-
     </div>
+
 
 </h:body>
 

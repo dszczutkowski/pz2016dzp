@@ -8,16 +8,6 @@ public class LoginPageModel {
     private String login;
     private String password;
 
-    public String getPasswordRepeat() {
-        return passwordRepeat;
-    }
-
-    public void setPasswordRepeat(String passwordRepeat) {
-        this.passwordRepeat = passwordRepeat;
-    }
-
-    private String passwordRepeat;
-
     public String getLogin() {
         return login;
     }

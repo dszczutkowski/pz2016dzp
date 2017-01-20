@@ -64,4 +64,15 @@ public class LoginPageController {
             e.printStackTrace();
         }
     }
+
+    public void logout() {
+        try {
+            HttpSession session = LoginSession.getSession();
+            session.invalidate();
+            FacesContext.getCurrentInstance().getExternalContext().redirect("loginPage.xhtml");
+            log.info("Wylogowano!");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
