@@ -53,8 +53,4 @@ public class Authorization implements Filter {
     public void destroy() {
 
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> master
