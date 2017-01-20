@@ -11,7 +11,9 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui" xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 <h:head>
     <h:outputStylesheet library="css" name="loginregistration.css" />
@@ -21,7 +23,7 @@
     <h:form id="messageMainForm">
 
         <div class="logo"><a href="index.xhtml">SM</a></div>
-        <p:repeat offset="" size="100" step="1" value="#{inboxPageModel.messages}" var="msg" varStatus="">
+        <ui:repeat value="#{inboxPageModel.messages}" var="msg">
             <h:panelGrid columns="2" style="width:100%" columnClasses="logo, details">
                 <p:commandLink update=":form:msgText" oncomplete="PF('msgDialog').show()">
                     <f:setPropertyActionListener value="#{msg}" target="#{inboxPageModel.selectedMessage}" />
@@ -41,7 +43,7 @@
                     </h:panelGrid>
                 </p:outputPanel>
             </h:panelGrid>
-        </p:repeat>
+        </ui:repeat>
 
         <p:dialog header="Msg Text" widgetVar="msgDialog" modal="true" showEffect="blind" hideEffect="explode" resizable="false">
             <p:outputPanel id="msgText" style="text-align:center;">

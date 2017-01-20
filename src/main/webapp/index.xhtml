@@ -38,9 +38,9 @@
             <a class="left" href="messagePage.xhtml">Messages</a>
             <a class="left" href="inbox.xhtml">Inbox</a>
 
-            <h3 class="right"> Witaj a!</h3>
-            <h:form>
-                <p:commandButton class="right" action="#{loginPageController.logout}" value="Logout" update="indexGrowl"/>
+            <a class="right"> Witaj a!</a>
+            <h:form style="width: 100px; height: 50px; float: right;">
+                <p:commandButton action="#{loginPageController.logout}" value="Logout" update="indexGrowl"/>
             </h:form>
         </div>
     </div>
