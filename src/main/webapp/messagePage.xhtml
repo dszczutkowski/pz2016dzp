@@ -14,11 +14,14 @@
       xmlns:p="http://primefaces.org/ui" xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 <h:head>
-    <h:outputStylesheet name="css/loginregistration.css"/>
+    <h:outputStylesheet library="css" name="loginregistration.css" />
+    <link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet"/>
 </h:head>
 <h:body>
 
     <h:form id="messageMainForm">
+
+        <div class="logo"><a href="index.xhtml">SM</a></div>
         <p:outputLabel id="messagePageTitle" value="Wyślij wiadmość" styleClass="loginPageTitle"/>
         <p:growl id="messageGrowl" showDetail="false" />
 
@@ -34,9 +37,21 @@
             </h:panelGrid>
         </p:panel>
 
-        <p:outputLabel id="messageLbl" value="Treść wiadomości:"/>
-        <p:inputTextarea rows="10" cols="70" id="messageInput" value="#{dropdownView.messageText}" required="true"/>
-        <p:commandButton id="sendBtn" value="Wyślij" action="#{dropdownView.sendButtonClick}" update="messageGrowl"/>
+        <p>
+            <p:outputLabel id="topicLbl" value="Temat"/>
+        </p>
+        <p>
+            <p:inputText id="loginInput" value="#{messagePageModel.topic}" />
+        </p>
+        <p>
+            <p:outputLabel id="messageLbl" value="Treść wiadomości:"/>
+        </p>
+        <p>
+            <p:inputTextarea rows="10" cols="70" id="messageInput" value="#{messagePageModel.messageText}" required="true"/>
+        </p>
+        <p>
+            <p:commandButton id="sendBtn" value="Wyślij" action="#{dropdownView.sendButtonClick}" update="messageGrowl"/>
+        </p>
 
     </h:form>
 

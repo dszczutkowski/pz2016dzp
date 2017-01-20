@@ -31,6 +31,7 @@ body {
     }
 
 #loginMainForm {
+    display: block;
     font-family: 'Acme', sans-serif;
     max-width: 800px;
     margin: 20px auto;
@@ -38,32 +39,34 @@ body {
     border: solid black 8px;
     border-radius: 8px;
 }
-    #loginMainForm h1{
-        display: block;
-        background-color: #DB5D73;
-        text-align: center;
-        border: solid 8px;
-        border-radius: 3.14em;
-        color: #E8C592;
-        font-size: 36px;
-        font-weight: bold;
-        padding: 5px 10px 5px 10px;
-        margin: 20px 320px 80px 320px;
-        text-shadow: 0.03em 0.03em #000000;
-        min-width: 150px;
-    }
 
-    #loginMainForm h1 a {
+    #loginMainForm p {
+         text-align: center;
+     }
+
+.logo {
+    display: inline-block;
+    position: relative;
+    background-color: #DB5D73;
+    text-align: center;
+    border: solid 8px;
+    border-radius: 3.14em;
+    color: #E8C592;
+    font-size: 36px;
+    font-weight: bold;
+    padding: 5px 10px 5px 10px;
+    margin: 20px 40% 80px;
+    text-shadow: 0.03em 0.03em #000000;
+    min-width: 150px;
+}
+
+    .logo a {
         margin: 0;
         padding: 0;
         font-size: 92px;
         color: #E8C592;
         font-family: 'Acme', sans-serif;
         text-decoration: none;
-    }
-
-    #loginMainForm p {
-        text-align: center;
     }
 
 .ui-state-default {
@@ -78,3 +81,16 @@ body {
     box-shadow: 0 2px 2px #fff inset;
     width: 60%;
 }
+
+#messageMainForm {
+    display: block;
+    font-family: 'Acme', sans-serif;
+    max-width: 80%;
+    margin: 20px auto;
+    background-color: #00A2A0;
+    border: solid black 8px;
+    border-radius: 8px;
+}
+    #messageMainForm p {
+        text-align: center;
+    }

@@ -53,6 +53,7 @@ public class DropdownView implements Serializable {
     private String chosenUser;
 
     private Map<String,String> users;
+
     private List<Member> list;
     @Inject
     private MemberRepository memberRepository;
@@ -61,15 +62,8 @@ public class DropdownView implements Serializable {
     @Named
     private Message newMessage;
 
-    private String messageText;
-
-    public String getMessageText() {
-        return messageText;
-    }
-
-    public void setMessageText(String messageText) {
-        this.messageText = messageText;
-    }
+    @Inject
+    private MessagePageModel messagePageModel;
 
     @PostConstruct
     public void init() {
@@ -85,7 +79,8 @@ public class DropdownView implements Serializable {
     }
 
     public void sendButtonClick() {
-        newMessage.setText(messageText);
+        newMessage.setText(messagePageModel.getMessageText());
+        newMessage.setTopic(messagePageModel.getTopic());
         newMessage.setReceiverId((long) 0);
         for (Member me : list) {
             if ((me.getFirstName() + " " + me.getLastName()).equals(chosenUser)) {

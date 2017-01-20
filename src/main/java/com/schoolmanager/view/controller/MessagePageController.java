@@ -47,7 +47,7 @@ public class MessagePageController {
         HttpSession session = LoginSession.getSession();
         Member meh;
         meh = (Member)session.getAttribute("USERNAME");
-        log.info("aaaaaaaaaaaaaaaaaaaaaaaaaaa ->"+meh.getLogin());
+        log.info("aaaaaaaaaaaaaaaaaaaaaaaaaaa ->" +meh.getLogin());
 
     }
 

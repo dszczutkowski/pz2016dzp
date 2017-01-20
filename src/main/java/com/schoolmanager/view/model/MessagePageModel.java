@@ -10,7 +10,16 @@ public class MessagePageModel {
 
     private String messageText;
 
+    private String topic;
 
+
+    public String getTopic() {
+        return topic;
+    }
+
+    public void setTopic(String topic) {
+        this.topic = topic;
+    }
 
     public String getMessageText() {
         return messageText;

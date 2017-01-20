@@ -30,7 +30,6 @@ public class IndexPageController {
 
     public void lessonButtonClick(){
         try {
-            log.info("ccccccccccccccccccccccccc");
             FacesContext.getCurrentInstance().getExternalContext().redirect("lesson.xhtml");
         } catch (IOException e) {
             e.printStackTrace();
