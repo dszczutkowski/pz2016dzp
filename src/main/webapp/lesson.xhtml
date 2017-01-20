@@ -11,14 +11,18 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui" xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 <h:head>
     <title>School Manager</title>
     <h:outputStylesheet library="css" name="menu.css" />
+    <h:outputStylesheet library="css" name="table.css" />
     <link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet"/>
 </h:head>
 <h:body>
+    <h:form>
+        <p:remoteCommand name="onload" action="#{lessonPageController.init}" autoRun="true" />
+    </h:form>
 
     <div class="pagephoto"/>
     <div class="header">
@@ -37,110 +41,38 @@
         </div>
 
     </div>
-    <p>
-        Klasa:
-        <select>
-            <option value="1a">1a</option>
-            <option value="1b">1b</option>
-            <option value="1c">1c</option>
-            <option value="2a">2a</option>
-            <option value="2b">2b</option>
-            <option value="2c">2c</option>
-            <option value="3a">3a</option>
-            <option value="3b">3b</option>
-            <option value="3c">3c</option>
-        </select>
-    </p>
-    <table style="width:100%" border="1">
-        <h:form>
-        <tr>
-            <td>
-                Godzina
-            </td>
-            <td>
-                Poniedzialek
-            </td>
-            <td>
-                Wtorek
-            </td>
-            <td>
-                Sroda
-            </td>
-            <td>
-                Czwartek
-            </td>
-            <td>
-                Piatek
-            </td>
-        </tr>
-
-        <tr>
-            <td>
-                8:00 - 8:45
-            </td>
-        </tr>
-
-        <tr>
-            <td>
-                8:55 - 9:40
-            </td>
-        </tr>
-            <tr>
-                <td>
-                    9:50 - 10:35
-                </td>
-                <td>
-                    <details>
-                        <summary>"#{LessonPageController.teacher}"</summary>
-                        <p> Nauczyciel:  Pawel Sobocinski</p>
-                        <p> Praca Domowa: Projekt zespolowy</p>
-                    </details>
-
-                </td>
-                <td>
-                    <details>
-                        <summary>"#{LessonPageController.teacher}"</summary>
-                        <p> Nauczyciel:  Pawel Sobocinski</p>
-                        <p> Praca Domowa: Projekt zespolowy</p>
-                    </details>
-
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    10:45 - 11:30
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    11:40 - 12:25
-                </td>
-                </tr>
-            <tr>
-                <td>
-                    12:45 - 13:30
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    13:45 - 14:30
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    14:40 - 15:25
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    15:30 - 16:15
-                </td>
-            </tr>
-    </h:form>
-    </table>
+    <p:panel header="Wybierz klase" style="margin-bottom:10px;">
+        <h:panelGrid columns="2" cellpadding="5">
+            <p:selectOneMenu id="Klasy" value="#{lessonPageModel.chosenKlasa}" style="width:300px">
+                <f:selectItems value="#{lessonPageModel.klasy}" />
+            </p:selectOneMenu>
+        </h:panelGrid>
+    </p:panel>
     <p>
         <p:commandButton id="CheckIt" value="CHECK IT" action="#{lessonPageController.CheckIt}"/>
     </p>
+
+    <p:dataTable var="Lesson" value="#{lessonPageModel.lessons}">
+        <p:column headerText="Poniedzialek">
+            <h:outputText value="#{lessonPageModel.lessons}" />
+        </p:column>
+
+        <p:column headerText="Wtorek">
+            <h:outputText value="#{modelTest.description}" />
+        </p:column>
+
+        <p:column headerText="Sroda">
+            <h:outputText value="#{car.brand}" />
+        </p:column>
+
+        <p:column headerText="Czwartek">
+            <h:outputText value="#{car.color}" />
+        </p:column>
+
+        <p:column headerText="Piatek">
+            <h:outputText value="#{car.color}" />
+        </p:column>
+    </p:dataTable>
 </h:body>
 
 </html>
