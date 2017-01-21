@@ -20,15 +20,15 @@
     <link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet"/>
 </h:head>
 <h:body>
-    <h:form id="messageMainForm">
+    <h:form id="inboxMainForm">
 
         <div class="logo"><a href="index.xhtml">SM</a></div>
         <ui:repeat value="#{inboxPageModel.messages}" var="msg">
             <h:panelGrid columns="2" style="width:100%" columnClasses="logo, details">
-                <p:commandLink update=":form:msgText" oncomplete="PF('msgDialog').show()">
+                <p:commandLink update=":inboxMainForm:msgText" oncomplete="PF('msgDialog').show()">
                     <f:setPropertyActionListener value="#{msg}" target="#{inboxPageModel.selectedMessage}" />
-                    <p:graphicImage name="resources/gfx/mail.png" />
-                </p:commandLink>
+                    <!--<p:graphicImage url="#{request.contextPath}/resources/gfx/181Hblurred.jpg" name="/resources/gfx/181Hblurred.jpg" />-->
+
 
                 <p:outputPanel>
                     <h:panelGrid columns="2" cellpadding="5">
@@ -42,14 +42,15 @@
                         <h:outputText value="2000-01-01 00:00" style="font-weight: bold"/>
                     </h:panelGrid>
                 </p:outputPanel>
+                </p:commandLink>
             </h:panelGrid>
         </ui:repeat>
 
-        <p:dialog header="Msg Text" widgetVar="msgDialog" modal="true" showEffect="blind" hideEffect="explode" resizable="false">
+        <p:dialog header="Wiadomość" widgetVar="msgDialog" modal="true" showEffect="blind" hideEffect="explode" resizable="false">
             <p:outputPanel id="msgText" style="text-align:center;">
                 <p:panelGrid  columns="1" rendered="#{not empty inboxPageModel.selectedMessage}" columnClasses="text">
                     <f:facet name="header">
-                        <p:graphicImage name="resources/gfx/mail.png" />
+                        <p:graphicImage name="/resources/gfx/mail.png" />
                     </f:facet>
 
                     <h:outputText value="Od:" />
