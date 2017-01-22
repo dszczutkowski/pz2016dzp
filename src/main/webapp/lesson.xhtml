@@ -41,19 +41,22 @@
         </div>
 
     </div>
-    <p:panel header="Wybierz klase" style="margin-bottom:10px;">
-        <h:panelGrid columns="2" cellpadding="5">
-            <p:selectOneMenu id="Klasy" value="#{lessonPageController.wybranaKlasa}" style="width:300px">
-                <f:selectItems value="#{lessonPageModel.klasy}" />
-                <p:ajax event="change" update="@this" />
-            </p:selectOneMenu>
-        </h:panelGrid>
-    </p:panel>
+    <h:form>
+        <p:panel header="Wybierz do kogo chcesz wysłać wiadomość" style="margin-bottom:10px;">
+            <h:panelGrid columns="2" cellpadding="5">
+                <p:selectOneMenu id="odbiorcy" value="#{lessonPageController.wybranaKlasa}" style="width:300px"
+                                 onchange="submit()">
+                    <f:selectItem itemLabel="Odbiorca" itemValue="" noSelectionOption="true" />
+                    <f:selectItems value="#{lessonPageModel.klasy}"/>
+                </p:selectOneMenu>
+            </h:panelGrid>
+        </p:panel>
+    </h:form>
 
 
     <h:form id="tableForm">
         <p>
-            <p:commandButton id="CheckIt" value="CHECK IT" action="#{lessonPageController.init}" update="dataTable"/>
+            <p:commandButton id="CheckIt" value="Refresh table" action="#{lessonPageController.init}" update="dataTable"/>
         </p>
         <p:dataTable var="Lesson" value="#{lessonPageModel.lekcje}" id="dataTable">
             <p:column headerText="Poniedzialek">

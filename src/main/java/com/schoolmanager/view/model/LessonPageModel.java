@@ -15,15 +15,6 @@ import java.util.Map;
 @ManagedBean
 @ViewScoped
 public class LessonPageModel implements Serializable {
-    private List<ModelTest> lessons = new ArrayList<ModelTest>();
-
-    public List<ModelTest> getLessons() {
-        return lessons;
-    }
-
-    public void setLessons(List<ModelTest> lessons) {
-        this.lessons = lessons;
-    }
 
     public String getChosenKlasa() {
         return chosenKlasa;

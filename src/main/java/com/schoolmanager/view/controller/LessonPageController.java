@@ -1,17 +1,14 @@
 package com.schoolmanager.view.controller;
 
 import com.schoolmanager.dao.LessonRepository;
-import com.schoolmanager.dao.MemberRepository;
 import com.schoolmanager.entity.LessonEntity;
 import com.schoolmanager.util.stereotypes.Controller;
+import com.schoolmanager.view.model.DropdownView;
 import com.schoolmanager.view.model.Lekcje;
 import com.schoolmanager.view.model.LessonPageModel;
-import com.schoolmanager.view.model.ModelTest;
 
 
-import javax.annotation.PostConstruct;
 import javax.inject.Inject;
-import java.io.IOException;
 
 import java.util.*;
 import java.util.logging.Logger;
@@ -29,11 +26,13 @@ public class LessonPageController{
     private LessonRepository lessonRepository;
 
     public String getWybranaKlasa() {
+        log.info("Hue Wybrana Klasa getter! " + WybranaKlasa);
         return WybranaKlasa;
     }
 
     public void setWybranaKlasa(String wybranaKlasa) {
-        WybranaKlasa = wybranaKlasa;
+        this.WybranaKlasa = wybranaKlasa;
+        log.info("Hue Wybrana Klasa SETTER! " + WybranaKlasa);
     }
 
     private String WybranaKlasa;
@@ -46,11 +45,9 @@ public class LessonPageController{
         List<LessonEntity> sroda = new ArrayList<LessonEntity>();
         List<LessonEntity> czwartek = new ArrayList<LessonEntity>();
         List<LessonEntity> piatek = new ArrayList<LessonEntity>();
-        String WybranaKlasa = "1a";
-        if (WybranaKlasa.isEmpty()){
+        if (WybranaKlasa == null){
             WybranaKlasa = "1a";
         }
-
         for (LessonEntity lesson : list) {
             if (WybranaKlasa.equals(lesson.getKlasa()))
             {
@@ -113,7 +110,7 @@ public class LessonPageController{
              lekcje.add(row);
         }
         lessonPageModel.setLekcje(lekcje);
-        log.info("HUEHUEUHEUHUEHUEUHEUHUEHUEHUE: KLASA" + lessonPageModel.getChosenKlasa());
+        log.info("HUEHUEUHEUHUEHUEUHEUHUEHUEHUE: KLASA " + this.getWybranaKlasa());
     }
 
     private int ZnajdzNajw(int size, int najwiekszy_size)
@@ -122,8 +119,5 @@ public class LessonPageController{
             return size;
         else
             return najwiekszy_size;
-    }
-    public void CheckIt() {
-        log.info("UEUEUUEUEUEUUEUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUEEEE");
     }
 }
