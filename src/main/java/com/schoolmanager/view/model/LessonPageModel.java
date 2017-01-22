@@ -8,6 +8,7 @@ import javax.faces.bean.ViewScoped;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 @Model
 @ManagedBean
@@ -41,5 +42,16 @@ public class LessonPageModel {
 
     private List<String> Klasy = Arrays.asList("1a", "1b", "1c");;
 
+
+    public List<com.schoolmanager.view.model.Lekcje> getLekcje() {
+        return Lekcje;
+    }
+
+    public void setLekcje(List<com.schoolmanager.view.model.Lekcje> lekcje) {
+        Lekcje = lekcje;
+    }
+
+    private List<Lekcje> Lekcje = com.schoolmanager.view.model.Lekcje.createLekcje();
+    //private List<Lekcje> Lekcje;
     private String chosenKlasa;
 }

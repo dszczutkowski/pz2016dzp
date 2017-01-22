@@ -52,27 +52,30 @@
         <p:commandButton id="CheckIt" value="CHECK IT" action="#{lessonPageController.CheckIt}"/>
     </p>
 
-    <p:dataTable var="Lesson" value="#{lessonPageModel.lessons}">
-        <p:column headerText="Poniedzialek">
-            <h:outputText value="#{lessonPageModel.lessons}" />
-        </p:column>
+    <h:form id="tableForm">
+        <p:dataTable var="Lesson" value="#{lessonPageModel.lekcje}" id="dataTable">
+            <p:ajax event="blur" update="out2" />
+            <p:column headerText="Poniedzialek">
+                <h:outputText value="#{Lesson.poniedzialek}" />
+            </p:column>
 
-        <p:column headerText="Wtorek">
-            <h:outputText value="#{modelTest.description}" />
-        </p:column>
+            <p:column headerText="Wtorek">
+                <h:outputText value="#{Lesson.wtorek}" />
+            </p:column>
 
-        <p:column headerText="Sroda">
-            <h:outputText value="#{car.brand}" />
-        </p:column>
+            <p:column headerText="Sroda">
+                <h:outputText value="#{Lesson.sroda}" />
+            </p:column>
 
-        <p:column headerText="Czwartek">
-            <h:outputText value="#{car.color}" />
-        </p:column>
+            <p:column headerText="Czwartek">
+                <h:outputText value="#{Lesson.czwartek}" />
+            </p:column>
 
-        <p:column headerText="Piatek">
-            <h:outputText value="#{car.color}" />
-        </p:column>
-    </p:dataTable>
+            <p:column headerText="Piatek">
+                <h:outputText value="#{Lesson.piatek}" />
+            </p:column>
+        </p:dataTable>
+    </h:form>
 </h:body>
 
 </html>

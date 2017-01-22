@@ -2,11 +2,13 @@ package com.schoolmanager.view.model;
 
 import com.schoolmanager.entity.Member;
 import com.schoolmanager.entity.Message;
+import com.schoolmanager.service.LoginSession;
 
 import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
 import javax.faces.bean.ViewScoped;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -37,5 +39,12 @@ public class InboxPageModel {
     public void setSelectedMessage(Message selectedMessage) {
         this.selectedMessage = selectedMessage;
     }
-
+    @PostConstruct
+    public void init()
+    {
+        HttpSession session = LoginSession.getSession();
+        Member m;
+        m = (Member)session.getAttribute("ID");
+       // inboxPageModel.setMessages(messageRepository.findAllReceived(m.getId()));
+    }
 }
