@@ -28,7 +28,16 @@ public class LessonPageController{
     @Inject
     private LessonRepository lessonRepository;
 
-    @PostConstruct
+    public String getWybranaKlasa() {
+        return WybranaKlasa;
+    }
+
+    public void setWybranaKlasa(String wybranaKlasa) {
+        WybranaKlasa = wybranaKlasa;
+    }
+
+    private String WybranaKlasa;
+
     public void init(){
         List<LessonEntity> list = lessonRepository.findAllOrderedBySubject();
         List<Lekcje> lekcje = new ArrayList<Lekcje>();
@@ -37,8 +46,16 @@ public class LessonPageController{
         List<LessonEntity> sroda = new ArrayList<LessonEntity>();
         List<LessonEntity> czwartek = new ArrayList<LessonEntity>();
         List<LessonEntity> piatek = new ArrayList<LessonEntity>();
+        String WybranaKlasa = "1a";
+        if (WybranaKlasa.isEmpty()){
+            WybranaKlasa = "1a";
+        }
 
         for (LessonEntity lesson : list) {
+            if (WybranaKlasa.equals(lesson.getKlasa()))
+            {
+                continue;
+            }
             String dzien = lesson.getDayofweek();
             if (dzien.equals("poniedzialek")) {
                 poniedzialek.add(lesson);

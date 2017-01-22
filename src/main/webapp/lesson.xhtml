@@ -43,8 +43,9 @@
     </div>
     <p:panel header="Wybierz klase" style="margin-bottom:10px;">
         <h:panelGrid columns="2" cellpadding="5">
-            <p:selectOneMenu id="Klasy" value="#{lessonPageModel.chosenKlasa}" style="width:300px" update="tableForm:dataTable" action="#{lessonPageController.init}">
+            <p:selectOneMenu id="Klasy" value="#{lessonPageController.wybranaKlasa}" style="width:300px">
                 <f:selectItems value="#{lessonPageModel.klasy}" />
+                <p:ajax event="change" update="@this" />
             </p:selectOneMenu>
         </h:panelGrid>
     </p:panel>
@@ -52,7 +53,7 @@
 
     <h:form id="tableForm">
         <p>
-            <p:commandButton id="CheckIt" value="CHECK IT" action="#{lessonPageController.CheckIt}" update="dataTable"/>
+            <p:commandButton id="CheckIt" value="CHECK IT" action="#{lessonPageController.init}" update="dataTable"/>
         </p>
         <p:dataTable var="Lesson" value="#{lessonPageModel.lekcje}" id="dataTable">
             <p:column headerText="Poniedzialek">

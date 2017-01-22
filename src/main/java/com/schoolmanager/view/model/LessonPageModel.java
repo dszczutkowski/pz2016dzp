@@ -5,6 +5,7 @@ import com.schoolmanager.entity.LessonEntity;
 import javax.enterprise.inject.Model;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.Map;
 @Model
 @ManagedBean
 @ViewScoped
-public class LessonPageModel {
+public class LessonPageModel implements Serializable {
     private List<ModelTest> lessons = new ArrayList<ModelTest>();
 
     public List<ModelTest> getLessons() {
