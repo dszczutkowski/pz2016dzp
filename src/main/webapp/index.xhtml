@@ -11,44 +11,34 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
 
 <h:head>
     <title>School Manager</title>
-    <h:outputStylesheet library="css" name="loginregistration.css" />
     <h:outputStylesheet library="css" name="menu.css" />
     <link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet"/>
-
 </h:head>
 <h:body>
 
     <div class="pagephoto"/>
     <div class="header">
 
-        <p:growl id="indexGrowl" showDetail="false" />
+        <h1>SM</h1>
 
-        <div class="logo"><a href="index.xhtml">SM</a></div>
+        <div class="navmenu">
+            <p:growl id="indexGrowl" showDetail="false" />
 
-        <h:form>
-            <div class="navmenu">
+            <a class="left" >Main</a>
+            <a class="left" href="lesson.xhtml">Lesson</a>
+            <a class="left" href="messagePage.xhtml">Messages</a>
+            <a class="left" href="inbox.xhtml">Inbox</a>
 
-                <a class="left" >Main</a>
-                <a class="left" href="lesson.xhtml">Lesson</a>
-                <a class="left" href="messagePage.xhtml">Messages</a>
-                <a class="left" href="inbox.xhtml">Inbox</a>
+            <a class="right" href="registration.xhtml">Register</a>
+            <a class="right" href="loginPage.xhtml">Login</a>
 
-                <p:commandButton class="right" action="#{loginPageController.logout}" value="Logout" update="indexGrowl"/>
-                <p:outputLabel class="right" value="Witaj #{indexPageModel.loggedUser}!" />
-            </div>
+        </div>
 
-        </h:form>
     </div>
-
-    <f:facet name="last">
-        <h:outputStylesheet library="css" name="menu.css" />
-    </f:facet>
 
 </h:body>
 

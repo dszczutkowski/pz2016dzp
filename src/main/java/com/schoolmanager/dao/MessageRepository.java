@@ -44,7 +44,7 @@ public class MessageRepository {
         // Swap criteria statements if you would like to try out type-safe criteria queries, a new
         // feature in JPA 2.0
         // criteria.select(member).where(cb.equal(member.get(Member_.email), email));
-        criteria.select(message).where(cb.equal(message.get(Message_.receiver), receiverId));
+        criteria.select(message).where(cb.equal(message.get(Message_.receiverId), receiverId));
         return em.createQuery(criteria).getResultList();
     }
 
@@ -55,7 +55,7 @@ public class MessageRepository {
         // Swap criteria statements if you would like to try out type-safe criteria queries, a new
         // feature in JPA 2.0
         // criteria.select(member).where(cb.equal(member.get(Member_.email), email));
-        criteria.select(message).where(cb.equal(message.get(Message_.sender), senderId));
+        criteria.select(message).where(cb.equal(message.get(Message_.senderId), senderId));
         return em.createQuery(criteria).getResultList();
     }
 

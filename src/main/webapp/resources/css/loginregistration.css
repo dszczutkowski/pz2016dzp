@@ -10,14 +10,14 @@ body {
     margin: 0;
     padding: 0;
     background-color: #F1F1F1;
-    background-image: url(#{request.contextPath}/resources/gfx/181Hblurred.jpg);
+    background-image: url(#{request.contextPath}/resources/gfx/181H.jpg);
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 .ui-widget {
     font-family: 'Acme', sans-serif;
-    font-size: 1.4em;
+    font-size: 2em;
 }
 
 .ui-button {

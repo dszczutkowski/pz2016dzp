@@ -21,7 +21,7 @@
 </h:head>
 <h:body>
     <h:form>
-        <p:remoteCommand name="onload" action="#{lessonPageController.init}" autoRun="true" />
+        <p:remoteCommand name="onload" action="#{lessonPageController.init}" autoRun="true" update="tableForm:dataTable"/>
     </h:form>
 
     <div class="pagephoto"/>
@@ -41,38 +41,45 @@
         </div>
 
     </div>
-    <p:panel header="Wybierz klase" style="margin-bottom:10px;">
-        <h:panelGrid columns="2" cellpadding="5">
-            <p:selectOneMenu id="Klasy" value="#{lessonPageModel.chosenKlasa}" style="width:300px">
-                <f:selectItems value="#{lessonPageModel.klasy}" />
-            </p:selectOneMenu>
-        </h:panelGrid>
-    </p:panel>
-    <p>
-        <p:commandButton id="CheckIt" value="CHECK IT" action="#{lessonPageController.CheckIt}"/>
-    </p>
+    <h:form>
+        <p:panel header="Wybierz do kogo chcesz wysłać wiadomość" style="margin-bottom:10px;">
+            <h:panelGrid columns="2" cellpadding="5">
+                <p:selectOneMenu id="odbiorcy" value="#{lessonPageController.wybranaKlasa}" style="width:300px"
+                                 onchange="submit()">
+                    <f:selectItem itemLabel="Odbiorca" itemValue="" noSelectionOption="true" />
+                    <f:selectItems value="#{lessonPageModel.klasy}"/>
+                </p:selectOneMenu>
+            </h:panelGrid>
+        </p:panel>
+    </h:form>
 
-    <p:dataTable var="Lesson" value="#{lessonPageModel.lessons}">
-        <p:column headerText="Poniedzialek">
-            <h:outputText value="#{lessonPageModel.lessons}" />
-        </p:column>
 
-        <p:column headerText="Wtorek">
-            <h:outputText value="#{modelTest.description}" />
-        </p:column>
+    <h:form id="tableForm">
+        <p>
+            <p:commandButton id="CheckIt" value="Refresh table" action="#{lessonPageController.init}" update="dataTable"/>
+        </p>
+        <p:dataTable var="Lesson" value="#{lessonPageModel.lekcje}" id="dataTable">
+            <p:column headerText="Poniedzialek">
+                <h:outputText value="#{Lesson.poniedzialek}" />
+            </p:column>
 
-        <p:column headerText="Sroda">
-            <h:outputText value="#{car.brand}" />
-        </p:column>
+            <p:column headerText="Wtorek">
+                <h:outputText value="#{Lesson.wtorek}" />
+            </p:column>
 
-        <p:column headerText="Czwartek">
-            <h:outputText value="#{car.color}" />
-        </p:column>
+            <p:column headerText="Sroda">
+                <h:outputText value="#{Lesson.sroda}" />
+            </p:column>
 
-        <p:column headerText="Piatek">
-            <h:outputText value="#{car.color}" />
-        </p:column>
-    </p:dataTable>
+            <p:column headerText="Czwartek">
+                <h:outputText value="#{Lesson.czwartek}" />
+            </p:column>
+
+            <p:column headerText="Piatek">
+                <h:outputText value="#{Lesson.piatek}" />
+            </p:column>
+        </p:dataTable>
+    </h:form>
 </h:body>
 
 </html>

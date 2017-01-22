@@ -1,30 +1,18 @@
 package com.schoolmanager.view.model;
 
-import com.schoolmanager.entity.Member;
-import com.schoolmanager.service.LoginSession;
-
-import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
-import javax.servlet.http.HttpSession;
 
 @Model
 public class IndexPageModel {
-
-    public String getLoggedUser() {
-        return loggedUser;
+    public String getProszeDzialaj() {
+        return proszeDzialaj;
     }
 
-    public void setLoggedUser(String loggedUser) {
-        this.loggedUser = loggedUser;
+    public void setProszeDzialaj(String proszeDzialaj) {
+        this.proszeDzialaj = proszeDzialaj;
     }
 
-    private String loggedUser;
+    private String proszeDzialaj;
 
 
-    @PostConstruct
-    public void init() {
-        HttpSession session = LoginSession.getSession();
-        Member m = (Member) session.getAttribute("USERNAME");
-        setLoggedUser(m.getLogin());
-    }
 }
