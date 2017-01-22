@@ -13,13 +13,11 @@ import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import java.io.IOException;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.logging.Logger;
 
 @Controller
-public class LessonPageController {
+public class LessonPageController{
 
     @Inject
     private LessonPageModel lessonPageModel;
@@ -98,6 +96,7 @@ public class LessonPageController {
              lekcje.add(row);
         }
         lessonPageModel.setLekcje(lekcje);
+        log.info("HUEHUEUHEUHUEHUEUHEUHUEHUEHUE: KLASA" + lessonPageModel.getChosenKlasa());
     }
 
     private int ZnajdzNajw(int size, int najwiekszy_size)

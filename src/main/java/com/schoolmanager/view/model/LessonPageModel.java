@@ -51,7 +51,7 @@ public class LessonPageModel {
         Lekcje = lekcje;
     }
 
-    private List<Lekcje> Lekcje = com.schoolmanager.view.model.Lekcje.createLekcje();
-    //private List<Lekcje> Lekcje;
+    //private List<Lekcje> Lekcje = com.schoolmanager.view.model.Lekcje.createLekcje();
+    private List<Lekcje> Lekcje;
     private String chosenKlasa;
 }

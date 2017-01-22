@@ -21,7 +21,7 @@
 </h:head>
 <h:body>
     <h:form>
-        <p:remoteCommand name="onload" action="#{lessonPageController.init}" autoRun="true" />
+        <p:remoteCommand name="onload" action="#{lessonPageController.init}" autoRun="true" update="tableForm:dataTable"/>
     </h:form>
 
     <div class="pagephoto"/>
@@ -43,18 +43,18 @@
     </div>
     <p:panel header="Wybierz klase" style="margin-bottom:10px;">
         <h:panelGrid columns="2" cellpadding="5">
-            <p:selectOneMenu id="Klasy" value="#{lessonPageModel.chosenKlasa}" style="width:300px">
+            <p:selectOneMenu id="Klasy" value="#{lessonPageModel.chosenKlasa}" style="width:300px" update="tableForm:dataTable" action="#{lessonPageController.init}">
                 <f:selectItems value="#{lessonPageModel.klasy}" />
             </p:selectOneMenu>
         </h:panelGrid>
     </p:panel>
-    <p>
-        <p:commandButton id="CheckIt" value="CHECK IT" action="#{lessonPageController.CheckIt}"/>
-    </p>
+
 
     <h:form id="tableForm">
+        <p>
+            <p:commandButton id="CheckIt" value="CHECK IT" action="#{lessonPageController.CheckIt}" update="dataTable"/>
+        </p>
         <p:dataTable var="Lesson" value="#{lessonPageModel.lekcje}" id="dataTable">
-            <p:ajax event="blur" update="out2" />
             <p:column headerText="Poniedzialek">
                 <h:outputText value="#{Lesson.poniedzialek}" />
             </p:column>
