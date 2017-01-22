@@ -17,14 +17,9 @@
 package com.schoolmanager.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Enumerated;
-import javax.persistence.UniqueConstraint;
+import javax.persistence.*;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -45,14 +40,6 @@ public class Member implements Serializable {
     @GeneratedValue
     @Column(name = "ID")
     private Long id;
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
 
     @Column(name = "LOGIN")
     private String login;
@@ -82,21 +69,14 @@ public class Member implements Serializable {
     @Column(name = "PHONE_NUMBER")
     private String phoneNumber;
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     @Column(name = "PASSWORD")
     private String password;
 
+    @OneToMany(mappedBy = "receiver")
+    private List<Message> inbox;
 
-    public Long getId() {
-        return id;
-    }
+    @OneToMany(mappedBy = "sender")
+    private List<Message> sent;
 
     public String getStatus() {
         return status;
@@ -140,5 +120,42 @@ public class Member implements Serializable {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public List<Message> getInbox() {
+        return inbox;
+    }
+
+    public void setInbox(List<Message> inbox) {
+        this.inbox = inbox;
+    }
+
+    public List<Message> getSent() {
+        return sent;
+    }
+
+    public void setSent(List<Message> sent) {
+        this.sent = sent;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

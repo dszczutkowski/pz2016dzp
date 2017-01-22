@@ -21,16 +21,15 @@
 </h:head>
 <h:body>
     <h:form id="loginMainForm">
-
         <div class="logo"><a href="index.xhtml">SM</a></div>
-        <ui:repeat value="#{inboxPageModel.messages}" var="msg">
+        <ui:repeat value="#{sentPageModel.messages}" var="msg">
             <h:panelGrid columns="2" style="width:100%" columnClasses="logo, details">
                 <p:commandLink update="loginMainForm:msgText" oncomplete="PF('msgDialog').show()">
-                    <f:setPropertyActionListener value="#{msg}" target="#{inboxPageModel.selectedMessage}" />
+                    <f:setPropertyActionListener value="#{msg}" target="#{sentPageModel.selectedMessage}" />
                     <p:outputPanel style="font-size: 24px">
-                        <h:panelGrid columns="2" cellpadding="5">
-                            <h:outputText value="Od:" />
-                            <h:outputText value="#{msg.sender.firstName} #{msg.sender.lastName}" style="font-weight: bold"/>
+                        <h:panelGrid columns="1" cellpadding="5">
+                            <h:outputText value="Do:" />
+                            <h:outputText value="#{msg.receiver.firstName} #{msg.receiver.lastName}" style="font-weight: bold"/>
 
                             <h:outputText value="Temat:" />
                             <h:outputText value="#{msg.topic}" style="font-weight: bold"/>
@@ -45,18 +44,18 @@
 
         <p:dialog header="Wiadomość" widgetVar="msgDialog" modal="true" showEffect="blind" hideEffect="explode" resizable="false" >
             <p:outputPanel id="msgText" style="text-align:center;">
-                <p:panelGrid  columns="1" rendered="#{not empty inboxPageModel.selectedMessage}" columnClasses="text">
+                <p:panelGrid  columns="1" rendered="#{not empty sentPageModel.selectedMessage}" columnClasses="text">
                     <f:facet name="header">
-                        <h:outputText value="#{inboxPageModel.selectedMessage.topic}" />
+                        <h:outputText value="#{sentPageModel.selectedMessage.topic}" />
                     </f:facet>
 
-                    <h:outputText value="Od: #{inboxPageModel.selectedMessage.sender.firstName} #{inboxPageModel.selectedMessage.sender.lastName}" />
+                    <h:outputText value="Do: #{sentPageModel.selectedMessage.receiver.firstName} #{sentPageModel.selectedMessage.receiver.lastName}" />
 
 
-                    <h:outputText value="Data: #{inboxPageModel.selectedMessage.date}" />
+                    <h:outputText value="Data: #{sentPageModel.selectedMessage.date}" />
 
                     <h:outputText value="Treść:" />
-                    <h:outputText style="height: 100px; width: 200px; text-align: justify;" value="#{inboxPageModel.selectedMessage.text}" />
+                    <h:outputText style="height: 100px; width: 200px; text-align: justify;" value="#{sentPageModel.selectedMessage.text}" />
                 </p:panelGrid>
             </p:outputPanel>
         </p:dialog>

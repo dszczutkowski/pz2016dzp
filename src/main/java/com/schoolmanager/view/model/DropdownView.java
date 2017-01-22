@@ -13,6 +13,7 @@ package com.schoolmanager.view.model;
         import org.slf4j.Logger;
 
         import java.io.Serializable;
+        import java.time.LocalDateTime;
         import java.util.HashMap;
         import java.util.List;
         import java.util.Map;
@@ -81,17 +82,18 @@ public class DropdownView implements Serializable {
     public void sendButtonClick() {
         newMessage.setText(messagePageModel.getMessageText());
         newMessage.setTopic(messagePageModel.getTopic());
-        newMessage.setReceiverId((long) 0);
+        newMessage.setDate(LocalDateTime.now());
+        //newMessage.setReceiverId((long) 0);
         for (Member me : list) {
             if ((me.getFirstName() + " " + me.getLastName()).equals(chosenUser)) {
-                newMessage.setReceiverId(me.getId());
+                newMessage.setReceiver(me);
             }
         }
-        if (newMessage.getReceiverId() == 0) {
+        if (newMessage.getReceiver() == null) {
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Wybierz do kogo wyslac wiadomosc!", "Nie wybrano odbiorcy");
             facesContext.addMessage(null, msg);
         } else {
-            newMessage.setSenderId(m.getId());
+            newMessage.setSender(m);
             try {
                 messageSender.send(newMessage);
                 FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_INFO, "Wyslano!", "Wyslano wiadomosc");
