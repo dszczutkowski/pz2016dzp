@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Created by IntelliJ IDEA.
+  User: USER
+  Date: 2016-11-27
+  Time: 19:43
+-->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+    <h:outputStylesheet library="css" name="loginregistration.css" />
+    <link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet"/>
+</h:head>
+<h:body>
+    <h:form id="loginMainForm">
+        <div class="logo"><a href="index.xhtml">SM</a></div>
+        <ui:repeat value="#{sentPageModel.messages}" var="msg">
+            <h:panelGrid columns="2" style="width:100%" columnClasses="logo, details">
+                <p:commandLink update="loginMainForm:msgText" oncomplete="PF('msgDialog').show()">
+                    <f:setPropertyActionListener value="#{msg}" target="#{sentPageModel.selectedMessage}" />
+                    <p:outputPanel style="font-size: 24px">
+                        <h:panelGrid columns="1" cellpadding="5">
+                            <h:outputText value="Do:" />
+                            <h:outputText value="#{msg.receiver.firstName} #{msg.receiver.lastName}" style="font-weight: bold"/>
+
+                            <h:outputText value="Temat:" />
+                            <h:outputText value="#{msg.topic}" style="font-weight: bold"/>
+
+                            <h:outputText value="Data:" />
+                            <h:outputText value="#{msg.date}" style="font-weight: bold"/>
+                        </h:panelGrid>
+                    </p:outputPanel>
+                </p:commandLink>
+            </h:panelGrid>
+        </ui:repeat>
+
+        <p:dialog header="Wiadomość" widgetVar="msgDialog" modal="true" showEffect="blind" hideEffect="explode" resizable="false" >
+            <p:outputPanel id="msgText" style="text-align:center;">
+                <p:panelGrid  columns="1" rendered="#{not empty sentPageModel.selectedMessage}" columnClasses="text">
+                    <f:facet name="header">
+                        <h:outputText value="#{sentPageModel.selectedMessage.topic}" />
+                    </f:facet>
+
+                    <h:outputText value="Do: #{sentPageModel.selectedMessage.receiver.firstName} #{sentPageModel.selectedMessage.receiver.lastName}" />
+
+
+                    <h:outputText value="Data: #{sentPageModel.selectedMessage.date}" />
+
+                    <h:outputText value="Treść:" />
+                    <h:outputText style="height: 100px; width: 200px; text-align: justify;" value="#{sentPageModel.selectedMessage.text}" />
+                </p:panelGrid>
+            </p:outputPanel>
+        </p:dialog>
+    </h:form>
+</h:body>
+
+</html>

@@ -23,7 +23,7 @@ import java.util.List;
 @ManagedBean
 @ViewScoped
 @Model
-public class InboxPageModel {
+public class SentPageModel {
 
     private List<Message> messages;
 
@@ -52,14 +52,12 @@ public class InboxPageModel {
     private java.util.logging.Logger log;
 
     @PostConstruct
-    public void init()
-    {
+    public void init() {
         HttpSession session = LoginSession.getSession();
         Member meh;
-        meh = (Member)session.getAttribute("USERNAME");
-        setMessages(messageRepository.findAllReceived(meh.getId()));
-        for(Message m : messages)
-        {
+        meh = (Member) session.getAttribute("USERNAME");
+        setMessages(messageRepository.findAllSent(meh.getId()));
+        for (Message m : messages) {
             log.info(m.getText() + "\n");
         }
     }
