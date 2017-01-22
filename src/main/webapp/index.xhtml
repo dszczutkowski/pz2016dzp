@@ -17,8 +17,8 @@
 
 <h:head>
     <title>School Manager</title>
-    <h:outputStylesheet library="css" name="menu.css" />
     <h:outputStylesheet library="css" name="loginregistration.css" />
+    <h:outputStylesheet library="css" name="menu.css" />
     <link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet"/>
 
 </h:head>
@@ -31,20 +31,24 @@
 
         <div class="logo"><a href="index.xhtml">SM</a></div>
 
-        <div class="navmenu">
+        <h:form>
+            <div class="navmenu">
 
-            <a class="left" >Main</a>
-            <a class="left" href="lesson.xhtml">Lesson</a>
-            <a class="left" href="messagePage.xhtml">Messages</a>
-            <a class="left" href="inbox.xhtml">Inbox</a>
+                <a class="left" >Main</a>
+                <a class="left" href="lesson.xhtml">Lesson</a>
+                <a class="left" href="messagePage.xhtml">Messages</a>
+                <a class="left" href="inbox.xhtml">Inbox</a>
 
-            <a class="right"> Witaj a!</a>
-            <h:form style="width: 100px; height: 50px; float: right;">
-                <p:commandButton action="#{loginPageController.logout}" value="Logout" update="indexGrowl"/>
-            </h:form>
-        </div>
+                <p:commandButton class="right" action="#{loginPageController.logout}" value="Logout" update="indexGrowl"/>
+                <p:outputLabel class="right" value="Witaj #{indexPageModel.loggedUser}!" />
+            </div>
+
+        </h:form>
     </div>
 
+    <f:facet name="last">
+        <h:outputStylesheet library="css" name="menu.css" />
+    </f:facet>
 
 </h:body>
 

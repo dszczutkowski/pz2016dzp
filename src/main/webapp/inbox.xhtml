@@ -20,50 +20,43 @@
     <link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet"/>
 </h:head>
 <h:body>
-    <h:form id="inboxMainForm">
+    <h:form id="loginMainForm">
 
         <div class="logo"><a href="index.xhtml">SM</a></div>
         <ui:repeat value="#{inboxPageModel.messages}" var="msg">
             <h:panelGrid columns="2" style="width:100%" columnClasses="logo, details">
-                <p:commandLink update=":inboxMainForm:msgText" oncomplete="PF('msgDialog').show()">
+                <p:commandLink update="loginMainForm:msgText" oncomplete="PF('msgDialog').show()">
                     <f:setPropertyActionListener value="#{msg}" target="#{inboxPageModel.selectedMessage}" />
-                    <!--<p:graphicImage url="#{request.contextPath}/resources/gfx/181Hblurred.jpg" name="/resources/gfx/181Hblurred.jpg" />-->
+                    <p:outputPanel style="font-size: 24px">
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <h:outputText value="Od:" />
+                            <h:outputText value="#{msg.sender.firstName} #{msg.sender.lastName}" style="font-weight: bold"/>
 
+                            <h:outputText value="Temat:" />
+                            <h:outputText value="#{msg.topic}" style="font-weight: bold"/>
 
-                <p:outputPanel>
-                    <h:panelGrid columns="2" cellpadding="5">
-                        <h:outputText value="Od:" />
-                        <h:outputText value="#{msg.sender.firstName}" style="font-weight: bold"/>
-
-                        <h:outputText value="Temat:" />
-                        <h:outputText value="#{msg.topic}" style="font-weight: bold"/>
-
-                        <h:outputText value="Data:" />
-                        <h:outputText value="#{msg.date}" style="font-weight: bold"/>
-                    </h:panelGrid>
-                </p:outputPanel>
+                            <h:outputText value="Data:" />
+                            <h:outputText value="#{msg.date}" style="font-weight: bold"/>
+                        </h:panelGrid>
+                    </p:outputPanel>
                 </p:commandLink>
             </h:panelGrid>
         </ui:repeat>
 
-        <p:dialog header="Wiadomość" widgetVar="msgDialog" modal="true" showEffect="blind" hideEffect="explode" resizable="false">
+        <p:dialog header="Wiadomość" widgetVar="msgDialog" modal="true" showEffect="blind" hideEffect="explode" resizable="false" >
             <p:outputPanel id="msgText" style="text-align:center;">
                 <p:panelGrid  columns="1" rendered="#{not empty inboxPageModel.selectedMessage}" columnClasses="text">
                     <f:facet name="header">
-                        <p:graphicImage name="/resources/gfx/mail.png" />
+                        <h:outputText value="#{inboxPageModel.selectedMessage.topic}" />
                     </f:facet>
 
-                    <h:outputText value="Od:" />
-                    <h:outputText value="#{inboxPageModel.selectedMessage.sender.lastName}" />
+                    <h:outputText value="Od: #{inboxPageModel.selectedMessage.sender.firstName} #{inboxPageModel.selectedMessage.sender.lastName}" />
 
-                    <h:outputText value="Temat:" />
-                    <h:outputText value="#{inboxPageModel.selectedMessage.topic}" />
 
-                    <h:outputText value="Data:" />
-                    <h:outputText value="#{inboxPageModel.selectedMessage.date}" />
+                    <h:outputText value="Data: #{inboxPageModel.selectedMessage.date}" />
 
                     <h:outputText value="Treść:" />
-                    <h:outputText value="#{inboxPageModel.selectedMessage.text}" />
+                    <h:outputText style="height: 100px; width: 200px; text-align: justify;" value="#{inboxPageModel.selectedMessage.text}" />
                 </p:panelGrid>
             </p:outputPanel>
         </p:dialog>
