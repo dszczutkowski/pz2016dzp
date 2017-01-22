@@ -33,13 +33,13 @@
                 <p:outputPanel>
                     <h:panelGrid columns="2" cellpadding="5">
                         <h:outputText value="Od:" />
-                        <h:outputText value="#{msg.senderId}" style="font-weight: bold"/>
+                        <h:outputText value="#{msg.sender.firstName}" style="font-weight: bold"/>
 
                         <h:outputText value="Temat:" />
                         <h:outputText value="#{msg.topic}" style="font-weight: bold"/>
 
                         <h:outputText value="Data:" />
-                        <h:outputText value="2000-01-01 00:00" style="font-weight: bold"/>
+                        <h:outputText value="#{msg.date}" style="font-weight: bold"/>
                     </h:panelGrid>
                 </p:outputPanel>
                 </p:commandLink>
@@ -54,13 +54,13 @@
                     </f:facet>
 
                     <h:outputText value="Od:" />
-                    <h:outputText value="#{inboxPageModel.selectedMessage.senderId}" />
+                    <h:outputText value="#{inboxPageModel.selectedMessage.sender.lastName}" />
 
                     <h:outputText value="Temat:" />
                     <h:outputText value="#{inboxPageModel.selectedMessage.topic}" />
 
                     <h:outputText value="Data:" />
-                    <h:outputText value="2000-01-01 00:00" />
+                    <h:outputText value="#{inboxPageModel.selectedMessage.date}" />
 
                     <h:outputText value="Treść:" />
                     <h:outputText value="#{inboxPageModel.selectedMessage.text}" />

@@ -20,7 +20,7 @@ import java.util.List;
  */
 
 @ManagedBean
-@ViewScopedS
+@ViewScoped
 @Model
 public class InboxPageModel {
 
