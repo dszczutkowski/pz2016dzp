@@ -11,56 +11,52 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui" xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 <h:head>
     <h:outputStylesheet library="css" name="loginregistration.css" />
     <link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet"/>
 </h:head>
 <h:body>
-    <h:form id="messageMainForm">
+    <h:form id="loginMainForm">
 
         <div class="logo"><a href="index.xhtml">SM</a></div>
-        <p:repeat offset="" size="100" step="1" value="#{inboxPageModel.messages}" var="msg" varStatus="">
+        <ui:repeat value="#{inboxPageModel.messages}" var="msg">
             <h:panelGrid columns="2" style="width:100%" columnClasses="logo, details">
-                <p:commandLink update=":form:msgText" oncomplete="PF('msgDialog').show()">
+                <p:commandLink update="loginMainForm:msgText" oncomplete="PF('msgDialog').show()">
                     <f:setPropertyActionListener value="#{msg}" target="#{inboxPageModel.selectedMessage}" />
-                    <p:graphicImage name="resources/gfx/mail.png" />
+                    <p:outputPanel style="font-size: 24px">
+                        <h:panelGrid columns="2" cellpadding="5">
+                            <h:outputText value="Od:" />
+                            <h:outputText value="#{msg.sender.firstName} #{msg.sender.lastName}" style="font-weight: bold"/>
+
+                            <h:outputText value="Temat:" />
+                            <h:outputText value="#{msg.topic}" style="font-weight: bold"/>
+
+                            <h:outputText value="Data:" />
+                            <h:outputText value="#{msg.date}" style="font-weight: bold"/>
+                        </h:panelGrid>
+                    </p:outputPanel>
                 </p:commandLink>
-
-                <p:outputPanel>
-                    <h:panelGrid columns="2" cellpadding="5">
-                        <h:outputText value="Od:" />
-                        <h:outputText value="#{msg.senderId}" style="font-weight: bold"/>
-
-                        <h:outputText value="Temat:" />
-                        <h:outputText value="#{msg.topic}" style="font-weight: bold"/>
-
-                        <h:outputText value="Data:" />
-                        <h:outputText value="2000-01-01 00:00" style="font-weight: bold"/>
-                    </h:panelGrid>
-                </p:outputPanel>
             </h:panelGrid>
-        </p:repeat>
+        </ui:repeat>
 
-        <p:dialog header="Msg Text" widgetVar="msgDialog" modal="true" showEffect="blind" hideEffect="explode" resizable="false">
+        <p:dialog header="Wiadomość" widgetVar="msgDialog" modal="true" showEffect="blind" hideEffect="explode" resizable="false" >
             <p:outputPanel id="msgText" style="text-align:center;">
                 <p:panelGrid  columns="1" rendered="#{not empty inboxPageModel.selectedMessage}" columnClasses="text">
                     <f:facet name="header">
-                        <p:graphicImage name="resources/gfx/mail.png" />
+                        <h:outputText value="#{inboxPageModel.selectedMessage.topic}" />
                     </f:facet>
 
-                    <h:outputText value="Od:" />
-                    <h:outputText value="#{inboxPageModel.selectedMessage.senderId}" />
+                    <h:outputText value="Od: #{inboxPageModel.selectedMessage.sender.firstName} #{inboxPageModel.selectedMessage.sender.lastName}" />
 
-                    <h:outputText value="Temat:" />
-                    <h:outputText value="#{inboxPageModel.selectedMessage.topic}" />
 
-                    <h:outputText value="Data:" />
-                    <h:outputText value="2000-01-01 00:00" />
+                    <h:outputText value="Data: #{inboxPageModel.selectedMessage.date}" />
 
                     <h:outputText value="Treść:" />
-                    <h:outputText value="#{inboxPageModel.selectedMessage.text}" />
+                    <h:outputText style="height: 100px; width: 200px; text-align: justify;" value="#{inboxPageModel.selectedMessage.text}" />
                 </p:panelGrid>
             </p:outputPanel>
         </p:dialog>

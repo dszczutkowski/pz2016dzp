@@ -20,27 +20,32 @@
     <link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet"/>
 </h:head>
 <h:body>
-    <h:form>
-        <p:remoteCommand name="onload" action="#{lessonPageController.init}" autoRun="true" update="tableForm:dataTable"/>
-    </h:form>
 
     <div class="pagephoto"/>
     <div class="header">
 
-        <h1>SM</h1>
+        <p:growl id="indexGrowl" showDetail="false" />
 
-        <div class="navmenu">
+        <div class="logo"><a href="index.xhtml">SM</a></div>
 
-            <a class="left" href="index.xhtml">Main</a>
-            <a class="left" href="">Lessons</a>
-            <a class="left" href="messagePage.xhtml">Stuff</a>
+        <h:form>
+            <div class="navmenu">
 
-            <a class="right" href="registration.xhtml">Register</a>
-            <a class="right" href="loginPage.xhtml">Login</a>
+                <a class="left" >Main</a>
+                <a class="left" href="lesson.xhtml">Lesson</a>
+                <a class="left" href="messagePage.xhtml">Messages</a>
+                <a class="left" href="inbox.xhtml">Inbox</a>
 
-        </div>
+                <p:commandButton class="right" action="#{loginPageController.logout}" value="Logout" update="indexGrowl"/>
+                <p:outputLabel class="right" value="Witaj #{indexPageModel.loggedUser}!" />
+            </div>
 
+        </h:form>
     </div>
+
+    <f:facet name="last">
+        <h:outputStylesheet library="css" name="menu.css" />
+    </f:facet>
     <h:form>
         <p:panel header="Wybierz do kogo chcesz wysłać wiadomość" style="margin-bottom:10px;">
             <h:panelGrid columns="2" cellpadding="5">
@@ -79,6 +84,9 @@
                 <h:outputText value="#{Lesson.piatek}" />
             </p:column>
         </p:dataTable>
+    </h:form>
+    <h:form>
+        <p:remoteCommand name="onload" action="#{lessonPageController.init}" autoRun="true" update="tableForm:dataTable"/>
     </h:form>
 </h:body>
 
